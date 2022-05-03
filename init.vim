@@ -400,7 +400,6 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'm
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
 
-Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
 Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
 Plug 'theniceboy/antovim' " gs to switch
@@ -415,6 +414,11 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
+" Editor enhancement
+Plug 'petertriho/nvim-scrollbar'
+Plug 'kevinhwang91/nvim-hlslens'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 
 call plug#end()
@@ -686,3 +690,31 @@ cnoreabbrev sudowrite w suda://%
 cnoreabbrev sw w suda://%
 " cnoreabbrev sw SudaRead
 
+" ==================== nvim-scrollbar ====================
+" if g:nvim_plugins_installation_completed == 1
+lua <<EOF
+require("scrollbar").setup()
+require("scrollbar.handlers.search").setup()
+require("scrollbar").setup({
+	show = true,
+	handle = {
+		text = " ",
+		color = "#928374",
+		hide_if_all_visible = true,
+	},
+	marks = {
+		Search = { color = "yellow" },
+		Misc = { color = "purple" },
+	},
+	handlers = {
+		diagnostic = true,
+		search = true,
+	},
+})
+EOF
+" endif
+
+" ==================== vim-visual-multi ====================
+"let g:VM_theme             = 'iceblue'
+"let g:VM_default_mappings = 0
+let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
