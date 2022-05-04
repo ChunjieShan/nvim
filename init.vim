@@ -570,6 +570,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" coc-explorer
+nmap tt :CocCommand explorer<CR>
+
 " Use K to show documentation in preview window.
 nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 
