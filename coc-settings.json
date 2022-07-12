@@ -164,6 +164,9 @@
 		"--style",
 		"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
 	],
+	"pylsp.builtin.enableInstallPylspMypy": true,
+	"pylsp.builtin.enableInstallPylsIsort": true,
+	"pylsp.builtin.enableInstallPythonLspBlack": true,
 	"html.format.enable": true,
 	"javascript.referencesCodeLens.enable": true,
 	"javascript.showUnused": true,

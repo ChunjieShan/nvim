@@ -375,6 +375,7 @@ Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
 Plug 'theniceboy/nvim-deus'
+Plug 'navarasu/onedark.nvim'
 
 " Status line
 Plug 'theniceboy/eleline.vim'
@@ -388,6 +389,7 @@ Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or 
 " Taglist
 Plug 'liuchengxu/vista.vim'
 
+Plug 'ibhagwan/fzf-lua'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -415,6 +417,8 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
+Plug 'mhinz/vim-startify'
+
 " Python edit enhancement
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
@@ -428,6 +432,11 @@ Plug 'petertriho/nvim-scrollbar'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'luochen1990/rainbow'
+Plug 'mg979/vim-xtabline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'wincent/terminus'
+Plug 'kyazdani42/nvim-web-devicons'
 
 
 call plug#end()
@@ -447,7 +456,11 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-color deus
+" color deus
+let g:onedark_config = {
+    \ 'style': 'cool',
+\}
+colorscheme onedark
 
 " ===
 " === eleline.vim
@@ -457,14 +470,12 @@ let g:airline_powerline_fonts = 0
 " ===
 " === FZF
 " ===
-nnoremap <c-p> :Leaderf file<CR>
+nnoremap <c-p> :FzfLua files <CR>
 " noremap <silent> <C-p> :Files<CR>
 noremap <silent> <C-f> :Rg<CR>
-noremap <silent> <C-h> :History<CR>
-"noremap <C-t> :BTags<CR>
-noremap <silent> <C-l> :Lines<CR>
-noremap <silent> <C-w> :Buffers<CR>
-noremap <leader>; :History:<CR>
+noremap <silent> <C-h> :FzfLua oldfiles cwd=~<CR>
+noremap <silent> <C-q> :FzfLua builtin<CR>
+noremap <silent> <C-l> :FzfLua lines<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -568,6 +579,7 @@ endif
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -740,7 +752,7 @@ let g:rnvimr_action = {
 let g:rnvimr_layout = { 'relative': 'editor',
             \ 'width': &columns,
             \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
+            \ 'col': 0.5,
+            \ 'row': 0.5,
             \ 'style': 'minimal' }
-let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+let g:rnvimr_presets = [{'width': 0.5, 'height': 0.5}]
